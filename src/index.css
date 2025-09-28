@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+  font-family: 'Brockmann';
+  src: url('/brockmann-medium-webfont.ttf') format('truetype'),
+       url('/brockmann-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Updated to use teal/emerald as primary */
+    --primary: 160 100% 33%; /* #00a67e */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 158 64% 52%; /* Lighter teal for accents */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 160 100% 33%; /* Teal ring */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 155 100% 97%; /* Very light teal */
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 160 100% 33%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 155 50% 95%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 155 30% 85%;
+    --sidebar-ring: 160 100% 33%;
+  }
+
+  .dark {
+    --background: 160 100% 8%; /* Dark teal background */
+    --foreground: 210 40% 98%;
+
+    --card: 160 100% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 160 100% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 100% 33%; /* Keep teal primary */
+    --primary-foreground: 160 100% 8%;
+
+    --secondary: 160 30% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 160 30% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 158 64% 52%;
+    --accent-foreground: 160 100% 8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 160 30% 15%;
+    --input: 160 30% 15%;
+    --ring: 158 64% 52%;
+    
+    --sidebar-background: 160 100% 6%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 160 100% 33%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 20% 12%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 160 20% 12%;
+    --sidebar-ring: 160 100% 33%;
+  }
+}
+
+@layer base {
+  /* FIXED: Exclude span elements from border styling to allow red asterisks */
+  *:where(:not(input, textarea, select, span, a, button, p, h1, h2, h3, h4, h5, h6)) {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-white text-black font-sans antialiased;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar - updated with teal colors */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f0fdfa; /* emerald-50 */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00a67e; /* Your teal color */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #059669; /* emerald-600 */
+  }
+}
+
+@layer components {
+  .text-mask-image {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Updated: pulse-chip now uses emerald colors */
+  .pulse-chip {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 border border-emerald-200;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-600 mt-4 max-w-3xl;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl shadow-elegant transition-all duration-300 hover:shadow-elegant-hover;
+  }
+
+  /* Enhanced glass card with teal accent */
+  .glass-card-teal {
+    @apply bg-emerald-50/70 backdrop-blur-sm border border-emerald-200/30 rounded-2xl shadow-emerald transition-all duration-300 hover:shadow-emerald-lg;
+  }
+
+  .feature-card {
+    @apply p-6 rounded-2xl transition-all duration-500 hover:translate-y-[-5px];
+  }
+  
+  /* Updated: button-primary now uses emerald colors */
+  .button-primary {
+    @apply bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-emerald hover:shadow-emerald-lg transform hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  /* Updated: button-secondary now uses emerald colors */
+  .button-secondary {
+    @apply bg-transparent border border-gray-300 hover:border-emerald-500 text-gray-800 hover:text-emerald-500 font-medium py-3 px-6 rounded-full transition-all duration-300;
+  }
+
+  /* New button variants */
+  .button-outline-emerald {
+    @apply border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white font-medium py-3 px-6 rounded-full transition-all duration-300;
+  }
+
+  .button-ghost-emerald {
+    @apply text-emerald-500 hover:bg-emerald-50 font-medium py-3 px-6 rounded-full transition-all duration-300;
+  }
+  
+  /* Updated: nav-link now uses emerald colors */
+  .nav-link {
+    @apply relative text-gray-800 hover:text-emerald-500 py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-emerald-500 after:transition-all hover:after:w-full;
+  }
+
+  /* New emerald-specific components */
+  .emerald-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800;
+  }
+
+  .emerald-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500;
+  }
+
+  .emerald-card {
+    @apply bg-white border border-emerald-200 rounded-xl shadow-emerald hover:shadow-emerald-lg transition-all duration-300;
+  }
+
+  .emerald-gradient-bg {
+    @apply bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600;
+  }
+
+  .emerald-gradient-text {
+    @apply bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent;
+  }
+}
+
+.image-scale-in {
+  animation: scaleIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Parallax effect */
+.parallax {
+  transform: translateY(var(--parallax-y, 0));
+  transition: transform 0.1s ease-out;
+}
+
+/* New emerald-specific animations */
+.emerald-pulse {
+  animation: emeraldPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes emeraldPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 166, 126, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 166, 126, 0);
+  }
+}
+
+.emerald-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.emerald-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 166, 126, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
