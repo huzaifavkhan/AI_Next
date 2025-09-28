@@ -1,7 +1,3 @@
-Got it. You want a **README** for **AI NEXT** in the same structure and style as the Voxllera one you shared. Since AI NEXT positions itself broadly as an AI solutions company, here’s a draft README tailored in that format:
-
----
-
 # **AI NEXT – Embrace the Future of AI**
 
 AI NEXT is an intelligent AI solutions platform designed to help businesses integrate and scale artificial intelligence across their operations. From automation and data analytics to decision support and digital transformation, AI NEXT equips organizations with tools that improve efficiency, reduce costs, and drive innovation.
