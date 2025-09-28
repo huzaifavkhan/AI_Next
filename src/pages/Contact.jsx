@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with your public key
-emailjs.init("83lqB3FTCvXHK_xC2");
+emailjs.init("YOUR EMAILJS PUBLIC KEY");
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState({});
@@ -106,8 +106,8 @@ const Contact = () => {
       };
 
       const result = await emailjs.send(
-        'service_ayvt62o', // Your service ID
-        'template_5ymmd14', // Your template ID
+        'YOUR EMAILJS SERVICE ID', // Your service ID
+        'YOUR EMAILJS TEMPLATE ID', // Your template ID
         templateParams
       );
 
